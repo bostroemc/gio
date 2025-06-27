@@ -64,7 +64,6 @@ package op
 
 import (
 	"encoding/binary"
-	"fmt"
 	"image"
 	"math"
 	"time"
@@ -126,7 +125,6 @@ func Defer(o *Ops, c CallOp) {
 	if c.ops == nil {
 		return
 	}
-	fmt.Println("Deferring active...")
 	state := ops.Save(&o.Internal)
 	// Wrap c in a macro that loads the saved state before execution.
 	m := Record(o)
@@ -144,10 +142,10 @@ func Defer2(o *Ops, c CallOp) {
 	if c.ops == nil {
 		return
 	}
-	state := ops.Save(&o.Internal)
+	//...state := ops.Save(&o.Internal)
 	// Wrap c in a macro that loads the saved state before execution.
 	m := Record(o)
-	state.Load()
+	//...state.Load()
 	c.Add(o)
 	c = m.Stop()
 	// A Defer is recorded as a TypeDefer followed by the
